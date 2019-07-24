@@ -25,7 +25,7 @@
 (function ($, window, document) {
     'use strict';
 
-    var sodem = 0;
+    var sodem = 0; // sodem = 0
 
     /**
      * Nhận cảnh báo khi có chương bị lỗi
@@ -44,6 +44,10 @@
 
     function cleanHtml(str) {
         str = str.replace(/\s*Chương\s*\d+\s?:[^<\n]/, '');
+        str = str.replace(/…/, '...');
+        str = str.replace(/\.(?:\s*\.)+/, '...');
+        str = str.replace(/đồ.{1,3}vật/, 'đồ vật');
+        str = str.replace(/ (\.|\?|!|,)/, '$1');
         str = str.replace(/[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]+/gm, ''); // eslint-disable-line
         str = str.replace(/\s[a-zA-Z0-9]{6,8}(="")?\s/gm, function (key, attr) {
             if (attr) return ' ';
